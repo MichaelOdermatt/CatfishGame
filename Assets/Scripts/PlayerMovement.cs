@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    // basic movement
     [SerializeField]
     private Rigidbody rigidbody;
     [SerializeField]
@@ -14,16 +15,25 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float rotationSpeed;
 
+    // jumping
     private bool isJumping;
+    [SerializeField]
+    private float jumpTime;
+    private float jumpTimeCounter;
+    [SerializeField]
+    private float jumpCooldownTime;
+    private float jumpCooldownTimeCounter;
+    private bool isJumpCooldownActive = false;
+
+    // checking for ground
     private bool isGrounded;
+    [SerializeField]
+    private float groundCheckOffset;
     private Vector3 bottomOfPlayer;
     [SerializeField]
     private float groundCheckRadius;
     [SerializeField]
     private LayerMask whatIsGround;
-    [SerializeField]
-    private float jumpTime;
-    private float jumpTimeCounter;
 
     private void Start()
     {
@@ -40,36 +50,24 @@ public class PlayerMovement : MonoBehaviour
 
         var jump = Input.GetKeyDown(KeyCode.Space);
 
-        calculateBottomOfPlayer();
-        isGrounded = Physics.OverlapSphere(bottomOfPlayer, groundCheckRadius, whatIsGround).Length != 0;
+        if (jump)
+        {
+            AttemptJump();
+        }
 
+        // the rest of this method should probably be in fixed update
         GroundMovement(ZRotation, XRotation);
+
         if (!isGrounded)
         {
             AirMovement(ZMovement, XMovement);
         }
 
-        if (jump == true && isGrounded)
+        if (isJumping)
         {
-            Jump();
-            isJumping = true;
-            jumpTimeCounter = jumpTime;
+            ContinueJump();
         }
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (jumpTimeCounter > 0 && isJumping)
-            {
-                Jump();
-                jumpTimeCounter -= Time.deltaTime;
-            } else
-            {
-                isJumping = false; 
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isJumping = false;
-        }
+
     }
 
     private void AirMovement(float zMovement, float xMovement)
@@ -98,20 +96,73 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // fix weird double jump issue
     private void Jump()
     {
         rigidbody.velocity = Vector3.up * jumpForce;
     }
 
-    // TODO: rework this
+    private void ContinueJump()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (jumpTimeCounter > 0 && isJumping)
+            {
+                Jump();
+                jumpTimeCounter -= Time.deltaTime;
+            } else
+            {
+                isJumping = false; 
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+        }
+    }
+
+    private void AttemptJump()
+    {
+        calculateBottomOfPlayer();
+        isGrounded = Physics.OverlapSphere(bottomOfPlayer, groundCheckRadius, whatIsGround).Length != 0;
+
+        if (isGrounded && !isJumpCooldownActive)
+        {
+            Jump();
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+        }
+    }
+
     private void calculateBottomOfPlayer()
     {
-        var offset = 0.5f;
         var x = rigidbody.position.x;
         var y = rigidbody.position.y;
         var z = rigidbody.position.z;
 
-        bottomOfPlayer = new Vector3(x, y - offset, z);
+        bottomOfPlayer.x = x;
+        bottomOfPlayer.y = y - groundCheckOffset;
+        bottomOfPlayer.z = z;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        StartJumpCooldownTimer();
+    }
+
+    private void StartJumpCooldownTimer()
+    {
+        jumpCooldownTimeCounter = jumpCooldownTime;
+        StartCoroutine(JumpCooldownTick());
+    }
+
+    private IEnumerator JumpCooldownTick()
+    {
+        isJumpCooldownActive = true;
+        while (jumpCooldownTimeCounter > 0)
+        {
+            jumpCooldownTimeCounter -= Time.deltaTime;
+            yield return null;
+        }
+        isJumpCooldownActive = false;
     }
 }

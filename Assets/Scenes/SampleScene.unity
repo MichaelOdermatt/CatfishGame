@@ -5409,7 +5409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.21303032, y: 0, z: 0, w: 0.9770456}
-  m_LocalPosition: {x: -3, y: 11.04, z: -28.51}
+  m_LocalPosition: {x: -3, y: 7.3, z: -20.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10906,14 +10906,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1908939638}
-  jumpForce: 8
+  jumpForce: 6
   airSpeed: 0.5
   rotationSpeed: 0.5
+  jumpTime: 0.5
+  jumpCooldownTime: 0.5
+  groundCheckOffset: 0.5
   groundCheckRadius: 0.25
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1
-  jumpTime: 0.35
 --- !u!1 &1924357220
 GameObject:
   m_ObjectHideFlags: 0
