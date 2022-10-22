@@ -15,8 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float rotationSpeed;
 
-    // jumping
-    private bool isJumping;
+    private JumpState jumpState = JumpState.HasLanded;
     [SerializeField]
     private float jumpTime;
     private float jumpTimeCounter;
@@ -25,9 +24,10 @@ public class PlayerMovement : MonoBehaviour
     private float jumpCooldownTimeCounter;
     private bool isJumpCooldownActive = false;
 
-    // checking for ground
+    // is true if the area under the player is ground
     private bool isGrounded;
     [SerializeField]
+    // how far underneath the player the game will check for ground
     private float groundCheckOffset;
     private Vector3 bottomOfPlayer;
     [SerializeField]
@@ -50,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
         var jump = Input.GetKeyDown(KeyCode.Space);
 
+        calculateBottomOfPlayer();
+        isGrounded = Physics.OverlapSphere(bottomOfPlayer, groundCheckRadius, whatIsGround).Length != 0;
+
         if (jump)
         {
             AttemptJump();
@@ -63,9 +66,16 @@ public class PlayerMovement : MonoBehaviour
             AirMovement(ZMovement, XMovement);
         }
 
-        if (isJumping)
+        if (jumpState == JumpState.IsJumping)
         {
-            ContinueJump();
+            if (jump)
+            {
+                ContinueJump();
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                jumpState = JumpState.IsFalling;
+            }
         }
 
     }
@@ -103,32 +113,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void ContinueJump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (jumpTimeCounter > 0 && jumpState == JumpState.IsJumping)
         {
-            if (jumpTimeCounter > 0 && isJumping)
-            {
-                Jump();
-                jumpTimeCounter -= Time.deltaTime;
-            } else
-            {
-                isJumping = false; 
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
+            Jump();
+            jumpTimeCounter -= Time.deltaTime;
+        } else
         {
-            isJumping = false;
+            jumpState = JumpState.IsFalling;
         }
     }
 
     private void AttemptJump()
     {
-        calculateBottomOfPlayer();
-        isGrounded = Physics.OverlapSphere(bottomOfPlayer, groundCheckRadius, whatIsGround).Length != 0;
-
-        if (isGrounded && !isJumpCooldownActive)
+        if (isGrounded && !isJumpCooldownActive && jumpState == JumpState.HasLanded)
         {
             Jump();
-            isJumping = true;
+            jumpState = JumpState.IsJumping;
             jumpTimeCounter = jumpTime;
         }
     }
@@ -146,7 +146,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        StartJumpCooldownTimer();
+        if (isGrounded)
+        {
+            StartJumpCooldownTimer();
+            jumpState = JumpState.HasLanded;
+        } else
+        {
+            StartCoroutine(ExecuteAfterTime.Exectute(RecheckHasLanded, jumpCooldownTime));
+        }
+    }
+
+    /// <summary>
+    /// Need to recheck if the player has landed, as sometimes the player will land half on the edge of
+    /// the keyboad and isGrounded will return false so we recheck until the player has
+    /// managed to wiggle themselves free
+    /// </summary>
+    private void RecheckHasLanded()
+    {
+        if (isGrounded)
+        {
+            jumpState = JumpState.HasLanded;
+        } else
+        {
+            StartCoroutine(ExecuteAfterTime.Exectute(RecheckHasLanded, jumpCooldownTime));
+        }
     }
 
     private void StartJumpCooldownTimer()
@@ -164,5 +187,12 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         isJumpCooldownActive = false;
+    }
+
+    private enum JumpState
+    {
+        IsJumping,
+        IsFalling,
+        HasLanded,
     }
 }

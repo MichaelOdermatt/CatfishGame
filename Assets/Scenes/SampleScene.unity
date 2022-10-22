@@ -10910,7 +10910,7 @@ MonoBehaviour:
   airSpeed: 0.5
   rotationSpeed: 0.5
   jumpTime: 0.5
-  jumpCooldownTime: 0.5
+  jumpCooldownTime: 0.25
   groundCheckOffset: 0.5
   groundCheckRadius: 0.25
   whatIsGround:
