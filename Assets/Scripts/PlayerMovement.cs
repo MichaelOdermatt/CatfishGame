@@ -35,6 +35,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsGround;
 
+    // Inputs (only to be updated in the Update method)
+    private float ZMovement;
+    private float XMovement;
+    private float ZRotation;
+    private float XRotation;
+    private bool jumpIsPressed;
+    private bool jumpIsHeld;
+
     private void Start()
     {
         calculateBottomOfPlayer();
@@ -42,14 +50,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        var ZMovement = Input.GetAxis("ZMovement");
-        var XMovement = Input.GetAxis("XMovement");
+        ZMovement = Input.GetAxis("ZMovement");
+        XMovement = Input.GetAxis("XMovement");
 
-        var ZRotation = Input.GetAxis("ZRotation");
-        var XRotation = Input.GetAxis("XRotation");
+        ZRotation = Input.GetAxis("ZRotation");
+        XRotation = Input.GetAxis("XRotation");
 
-        var jumpIsPressed = Input.GetKeyDown(KeyCode.Space);
-        var jumpIsHeld = Input.GetKey(KeyCode.Space);
+        jumpIsPressed = Input.GetKeyDown(KeyCode.Space);
+        jumpIsHeld = Input.GetKey(KeyCode.Space);
 
         calculateBottomOfPlayer();
         isGrounded = Physics.OverlapSphere(bottomOfPlayer, groundCheckRadius, whatIsGround).Length != 0;
@@ -59,7 +67,10 @@ public class PlayerMovement : MonoBehaviour
             AttemptJump();
         }
 
-        // the rest of this method should probably be in fixed update
+    }
+
+    private void FixedUpdate()
+    {
         GroundMovement(ZRotation, XRotation);
 
         if (!isGrounded)
