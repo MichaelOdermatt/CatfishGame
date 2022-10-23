@@ -48,12 +48,13 @@ public class PlayerMovement : MonoBehaviour
         var ZRotation = Input.GetAxis("ZRotation");
         var XRotation = Input.GetAxis("XRotation");
 
-        var jump = Input.GetKeyDown(KeyCode.Space);
+        var jumpIsPressed = Input.GetKeyDown(KeyCode.Space);
+        var jumpIsHeld = Input.GetKey(KeyCode.Space);
 
         calculateBottomOfPlayer();
         isGrounded = Physics.OverlapSphere(bottomOfPlayer, groundCheckRadius, whatIsGround).Length != 0;
 
-        if (jump)
+        if (jumpIsPressed)
         {
             AttemptJump();
         }
@@ -68,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpState == JumpState.IsJumping)
         {
-            if (jump)
+            if (jumpIsHeld)
             {
                 ContinueJump();
             }
@@ -77,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
                 jumpState = JumpState.IsFalling;
             }
         }
-
     }
 
     private void AirMovement(float zMovement, float xMovement)
