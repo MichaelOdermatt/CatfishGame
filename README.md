@@ -1,8 +1,9 @@
 ## TODO
 ### Character Controller
 - [x] Use fixed update
+- [ ] Fix double jump
 
 ### Assets
 - [x] Create monitor model
 - [ ] Add screen to monitor
-- [ ] add blinking line to user input text mesh
+- [ ] Add blinking line to user input text mesh
