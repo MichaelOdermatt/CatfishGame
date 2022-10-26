@@ -1,6 +1,8 @@
 ## TODO
 ### Character Controller
-- [ ] Reorganize code structure
+- [x] Use fixed update
 
 ### Assets
-- [ ] Create Monitor Model
+- [x] Create monitor model
+- [ ] Add screen to monitor
+- [ ] add blinking line to user input text mesh
