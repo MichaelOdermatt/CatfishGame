@@ -6,7 +6,7 @@
 ### Assets
 - [x] Create monitor model
 - [ ] Add screen to monitor
-- [x] Add blinking line to user input text mesh
+- [ ] Fix blinking line script's remove character method
 
 ### Story
 - [ ] Come up with some sort of narrative

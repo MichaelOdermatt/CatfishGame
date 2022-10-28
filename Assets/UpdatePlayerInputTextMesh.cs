@@ -34,7 +34,7 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
 
     public void ContinuouslyToggleUseStringWithCursor()
     {
-        blinkingTextCursor.useStringWithCursor = !blinkingTextCursor.useStringWithCursor;
+        blinkingTextCursor.ToggleUseCursor();
         StartCoroutine(ExecuteAfterTime.Exectute(ContinuouslyToggleUseStringWithCursor, blinkingTextCursor.cursorBlinkFrequency));
     }
 }
