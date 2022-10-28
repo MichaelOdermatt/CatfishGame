@@ -9,7 +9,7 @@ using UnityEngine;
 public class UpdateScreen : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshPro letterOutput;
+    private UpdatePlayerInputTextMesh letterOutput;
     public bool isCapsLockOn;
 
     /// <summary>
@@ -18,12 +18,11 @@ public class UpdateScreen : MonoBehaviour
     /// <param name="character"></param>
     public void AddCharacter(string character)
     {
-        letterOutput.text += character;
+        letterOutput.AddCharacter(character);
     }
 
     public void RemoveLastChar()
     {
-        string input = letterOutput.text;
-        letterOutput.text = input.Remove(input.Length - 1);
+        letterOutput.RemoveLastChar();
     }
 }
