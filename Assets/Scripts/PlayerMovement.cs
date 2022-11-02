@@ -40,8 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private float XMovement;
     private float ZRotation;
     private float XRotation;
-    private bool jumpIsPressed;
-    private bool jumpIsHeld;
+    private bool jumpKeyIsPressed;
+    private bool jumpKeyIsHeld;
 
     private void Start()
     {
@@ -56,17 +56,16 @@ public class PlayerMovement : MonoBehaviour
         ZRotation = Input.GetAxis("ZRotation");
         XRotation = Input.GetAxis("XRotation");
 
-        jumpIsPressed = Input.GetKeyDown(KeyCode.Space);
-        jumpIsHeld = Input.GetKey(KeyCode.Space);
+        jumpKeyIsPressed = Input.GetKeyDown(KeyCode.Space);
+        jumpKeyIsHeld = Input.GetKey(KeyCode.Space);
 
         calculateBottomOfPlayer();
         isGrounded = Physics.OverlapSphere(bottomOfPlayer, groundCheckRadius, whatIsGround).Length != 0;
 
-        if (jumpIsPressed)
+        if (jumpKeyIsPressed)
         {
             AttemptJump();
         }
-
     }
 
     private void FixedUpdate()
@@ -80,11 +79,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpState == JumpState.IsJumping)
         {
-            if (jumpIsHeld)
+            if (jumpKeyIsHeld)
             {
                 ContinueJump();
             }
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (!jumpKeyIsHeld)
             {
                 jumpState = JumpState.IsFalling;
             }
