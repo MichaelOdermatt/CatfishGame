@@ -8,6 +8,8 @@
 - [x] Add screen to monitor
 - [x] Fix blinking line script's remove character method
 - [ ] Texture monitor
+- [ ] Create additional assets for the desk
+- [ ] Create a wood texture for the desk
 
 ### Visual Effects
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
