@@ -5,8 +5,8 @@
 
 ### Assets
 - [x] Create monitor model
-- [ ] Add screen to monitor
-- [ ] Fix blinking line script's remove character method
+- [x] Add screen to monitor
+- [x] Fix blinking line script's remove character method
 
 ### Story
 - [ ] Come up with some sort of narrative

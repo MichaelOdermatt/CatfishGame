@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BlinkingTextCursor : MonoBehaviour
+public class BlinkingTextCursor 
 {
     public string cursorSymbol = "|";
     public string withoutCursorSymbol = "<color=#00000000>|</color>";
@@ -11,15 +11,19 @@ public class BlinkingTextCursor : MonoBehaviour
     // gets updated every 0.5 seconds to represent if the output string will contain the cursor
     private bool useStringWithCursor = true;
     public float cursorBlinkFrequency = 0.5f;
+    private float characterLimit = 15;
+
+    public BlinkingTextCursor()
+    {
+        withCursor = cursorSymbol;
+        withoutCursor = withoutCursorSymbol;
+    }
 
     /// <summary>
     /// Returns either the with or without cursor string, depending on an iternal internal value.
     /// </summary>
     public string GetOutputString()
     {
-        Debug.Log(withoutCursor);
-        Debug.Log(withCursor);
-        Debug.Log(rawString);
         if (useStringWithCursor)
             return withCursor;
         return withoutCursor;
@@ -30,6 +34,9 @@ public class BlinkingTextCursor : MonoBehaviour
     /// </summary>
     public void AddChar(string character)
     {
+        if (rawString.Length >= characterLimit)
+            return;
+
         rawString += character;
         withoutCursor = rawString + withoutCursorSymbol;
         withCursor = rawString + cursorSymbol;
@@ -40,9 +47,12 @@ public class BlinkingTextCursor : MonoBehaviour
     /// </summary>
     public void RemoveLastChar()
     {
+        if (rawString.Length <= 0)
+            return;
+
         rawString = rawString.Remove(rawString.Length - 1);
         withoutCursor = rawString + withoutCursorSymbol;
-        withCursor = rawString + withoutCursor;
+        withCursor = rawString + cursorSymbol;
     }
 
     public void ToggleUseCursor()
