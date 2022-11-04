@@ -10,7 +10,7 @@
 - [x] Texture monitor
 - [ ] Create additional assets for the desk
 - [ ] Create a wood texture for the desk
-- [ ] Create create post-it note with login password on it
+- [x] Create create post-it note with login password on it
 
 ### Visual Effects
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
@@ -23,4 +23,12 @@
 - [ ] Create something which reads the players input when enter is pressed and switches from the login screen to another screen.
 
 ## Narrative Ideas
+
+#### Login Screen
 - Have the first screen be a login screen where the user must type in a password, they cannot play the rest of the game without first passing the login screen.
+
+#### Responsive Responses
+- Have the talking be responsive to the players input, the player can say anything and the program will try and parse it.
+- Have the player text highlight green when they type something that can be recognized, otherwise red, white if they are still typing a word.
+- There is a list of recognized words (words that turn green), which can be combined in several ways. The respose will be generated or picked based on what combination you choose.
+
