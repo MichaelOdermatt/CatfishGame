@@ -15,12 +15,14 @@
 ### Visual Effects
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
 - [ ] Camera wobble?
+- [ ] Add some form of feedback when the user either gets the login password wrong or right.
 
 ### Story
 - [ ] Come up with some sort of narrative
 
 ### Gameplay
-- [ ] Create something which reads the players input when enter is pressed and switches from the login screen to another screen.
+- [X] Create something which reads the players input when enter is pressed and switches from the login screen to another screen.
+- [ ] Do something about space being pressed as the first character. Somehow let the player know (or don't allow space to be pressed as a first character).
 
 ## Narrative Ideas
 
@@ -29,6 +31,7 @@
 
 #### Responsive Responses
 - Have the talking be responsive to the players input, the player can say anything and the program will try and parse it.
-- Have the player text highlight green when they type something that can be recognized, otherwise red, white if they are still typing a word.
-- There is a list of recognized words (words that turn green), which can be combined in several ways. The respose will be generated or picked based on what combination you choose.
+- Have the player text highlight green when they type something that can be recognized, otherwise red, white if they are still typing a word. There is a list of recognized words (words that turn green), which can be combined in several ways. The respose will be generated or picked based on what combination you choose.
+- Just have what the player should type overlayed in grey, and they have to match that as closely as they can.
+- Make it an incredibly short game about a pun being taken literally, you start the game, login and see that you have a new message on the dating site, you respond with whatever you want then the game ends. Hopefully leaving you wanting more and upset that you just spent so long on the login screen for nothing. Itentionally lie on the itch page about the game being 20 hours of romance.
 
