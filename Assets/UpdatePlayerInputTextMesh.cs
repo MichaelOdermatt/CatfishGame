@@ -45,4 +45,9 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
     {
         blinkingTextCursor.ClearText(); 
     }
+
+    public string GetText()
+    {
+        return blinkingTextCursor.GetRawString();
+    }
 }

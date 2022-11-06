@@ -65,4 +65,10 @@ public class BlinkingTextCursor
         withCursor = cursorSymbol;
         withoutCursor = withoutCursorSymbol;
     }
+
+    /// <returns>The raw string that the use has typed</returns>
+    public string GetRawString()
+    {
+        return rawString;
+    }
 }
