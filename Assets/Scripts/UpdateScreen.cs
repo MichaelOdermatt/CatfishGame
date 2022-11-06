@@ -12,11 +12,10 @@ public class UpdateScreen : MonoBehaviour
     [SerializeField]
     private UpdatePlayerInputTextMesh letterOutput;
     public bool isCapsLockOn;
-    // should this be stored in its own class along with a method
-    // for cheking password correctness?
-    public string loginScreenPassword = "B6m3";
     [SerializeField]
     private Image ScreenImage;
+    [SerializeField]
+    private Sprite AfterloginScreenImage;
 
     /// <summary>
     /// Adds the given character to the screen.
@@ -32,10 +31,10 @@ public class UpdateScreen : MonoBehaviour
         letterOutput.RemoveLastChar();
     }
 
-    public void ClearScreen()
+    public void AttemptLogin()
     {
-        if (loginScreenPassword == letterOutput.GetText())
-            // update the screen Image
+        if (LoginPassword.IsPasswordCorrect(letterOutput.GetText()))
+            ScreenImage.sprite = AfterloginScreenImage;
 
         letterOutput.ClearText();    
     }

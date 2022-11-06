@@ -5307,6 +5307,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 300878771}
+  - {fileID: 1105744700}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -7.82, z: 0}
@@ -7051,12 +7052,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105744699}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.7536781, z: -0, w: 0.65724385}
+  m_LocalPosition: {x: 2.0057287, y: -9.809999, z: -11.560409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2129016011}
-  m_RootOrder: 9
+  m_Father: {fileID: 884154740}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1105744701
 MonoBehaviour:
@@ -7072,6 +7073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   letterOutput: {fileID: 437226425}
   isCapsLockOn: 0
+  ScreenImage: {fileID: 300878772}
+  AfterloginScreenImage: {fileID: 21300000, guid: 84b7cc7ae42945d4c924b1101f5dd286, type: 3}
 --- !u!1 &1129389210
 GameObject:
   m_ObjectHideFlags: 0
@@ -10759,7 +10762,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2129016011}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1702066078
 Light:
@@ -13395,7 +13398,6 @@ Transform:
   - {fileID: 658665141}
   - {fileID: 928019852}
   - {fileID: 327187873}
-  - {fileID: 1105744700}
   - {fileID: 1702066077}
   m_Father: {fileID: 0}
   m_RootOrder: 3
