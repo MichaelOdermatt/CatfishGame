@@ -1,6 +1,9 @@
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Responsible for updating the player input text mesh
+/// </summary>
 public class UpdatePlayerInputTextMesh : MonoBehaviour
 {
     [SerializeField]
@@ -36,5 +39,10 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
     {
         blinkingTextCursor.ToggleUseCursor();
         StartCoroutine(ExecuteAfterTime.Exectute(ContinuouslyToggleUseStringWithCursor, blinkingTextCursor.cursorBlinkFrequency));
+    }
+
+    public void ClearText()
+    {
+        blinkingTextCursor.ClearText(); 
     }
 }

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// Soley responsible for updating the TextMeshPro object
+/// Responsible updating the monitor screen
 /// </summary>
 public class UpdateScreen : MonoBehaviour
 {
@@ -24,5 +24,10 @@ public class UpdateScreen : MonoBehaviour
     public void RemoveLastChar()
     {
         letterOutput.RemoveLastChar();
+    }
+
+    public void ClearScreen()
+    {
+        letterOutput.ClearText();    
     }
 }

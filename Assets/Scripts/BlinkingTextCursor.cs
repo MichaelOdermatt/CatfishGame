@@ -59,4 +59,10 @@ public class BlinkingTextCursor
     {
         useStringWithCursor = !useStringWithCursor;
     }
+
+    public void ClearText()
+    {
+        withCursor = cursorSymbol;
+        withoutCursor = withoutCursorSymbol;
+    }
 }
