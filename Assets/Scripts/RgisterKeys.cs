@@ -13,7 +13,6 @@ public class RgisterKeys : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         GameObject gameObject = collision.gameObject;
 
         IKeyFunction keyFunction;

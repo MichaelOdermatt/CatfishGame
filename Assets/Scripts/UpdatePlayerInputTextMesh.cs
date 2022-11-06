@@ -27,6 +27,10 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
 
     public void AddCharacter(string character)
     {
+        // prevent the first character from being a space to avoid confusion
+        if (character == " " && blinkingTextCursor.GetRawString() == "")
+            return;
+
         blinkingTextCursor.AddChar(character);
     }
 
