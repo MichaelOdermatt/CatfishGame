@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Responsible for creating the blinking text effect
+/// </summary>
 public class BlinkingTextCursor 
 {
     public string cursorSymbol = "|";
@@ -62,6 +65,7 @@ public class BlinkingTextCursor
 
     public void ClearText()
     {
+        rawString = string.Empty;
         withCursor = cursorSymbol;
         withoutCursor = withoutCursorSymbol;
     }
