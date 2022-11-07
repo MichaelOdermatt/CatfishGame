@@ -9,7 +9,8 @@
 - [x] Fix blinking line script's remove character method
 - [x] Texture monitor
 - [ ] Create additional assets for the desk
-- [ ] Create a wood texture for the desk
+- [ ] Create a mouse model
+- [x] Create a wood texture for the desk
 - [x] Create create post-it note with login password on it
 
 ### Visual Effects
