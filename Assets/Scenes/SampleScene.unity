@@ -4298,7 +4298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: -0.5412563, y: 0.41246065, z: -0.34548268, w: -0.6461885}
-  m_LocalPosition: {x: 11.36, y: 19.3, z: 3.17}
+  m_LocalPosition: {x: 12.88, y: 19.17, z: 4.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11234,7 +11234,7 @@ GameObject:
   - component: {fileID: 1840776336}
   - component: {fileID: 1840776335}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
