@@ -9,7 +9,7 @@
 - [x] Fix blinking line script's remove character method
 - [x] Texture monitor
 - [ ] Create additional assets for the desk
-- [ ] Create a mouse model
+- [x] Create a mouse model
 - [x] Create a wood texture for the desk
 - [x] Create create post-it note with login password on it
 
@@ -17,6 +17,7 @@
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
 - [ ] Camera wobble?
 - [ ] Add some form of feedback when the user either gets the login password wrong or right.
+- [ ] Figure out post processing
 
 ### Story
 - [ ] Come up with some sort of narrative
