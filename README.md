@@ -12,6 +12,8 @@
 - [x] Create a mouse model
 - [x] Create a wood texture for the desk
 - [x] Create create post-it note with login password on it
+- [ ] Fix lighting
+- [ ] Add lamp model
 
 ### Visual Effects
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
@@ -25,6 +27,8 @@
 ### Gameplay
 - [X] Create something which reads the players input when enter is pressed and switches from the login screen to another screen.
 - [X] Do something about space being pressed as the first character. Somehow let the player know (or don't allow space to be pressed as a first character).
+- [ ] Make movement feel a bit better
+- [ ] Try and fix the player extended jump
 
 ## Narrative Ideas
 
