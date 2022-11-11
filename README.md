@@ -13,7 +13,7 @@
 - [x] Create a wood texture for the desk
 - [x] Create create post-it note with login password on it
 - [ ] Fix lighting
-- [ ] Add lamp model
+- [x] Add lamp model
 
 ### Visual Effects
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
