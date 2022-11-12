@@ -14,12 +14,19 @@
 - [x] Create create post-it note with login password on it
 - [ ] Fix lighting
 - [x] Add lamp model
+- [x] Create Speaker model
+- [ ] Create player animations
+
 
 ### Visual Effects
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
 - [ ] Camera wobble?
 - [ ] Add some form of feedback when the user either gets the login password wrong or right.
 - [ ] Figure out post processing
+
+## Sound
+- [ ] Add music to speaker asset
+- [ ] Add sounds to player movement
 
 ### Story
 - [ ] Come up with some sort of narrative
