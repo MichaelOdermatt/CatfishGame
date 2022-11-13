@@ -36,6 +36,7 @@
 - [X] Do something about space being pressed as the first character. Somehow let the player know (or don't allow space to be pressed as a first character).
 - [ ] Make movement feel a bit better
 - [ ] Try and fix the player extended jump
+- [ ] Add a respawn button that resets the player location to the starting location
 
 ## Narrative Ideas
 
