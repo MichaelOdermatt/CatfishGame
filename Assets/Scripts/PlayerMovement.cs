@@ -42,10 +42,14 @@ public class PlayerMovement : MonoBehaviour
     private float XRotation;
     private bool jumpKeyIsPressed;
     private bool jumpKeyIsHeld;
+    private bool resetButtonIsPressed;
+
+    private Vector3 playerStartPos;
 
     private void Start()
     {
         calculateBottomOfPlayer();
+        playerStartPos = rigidbody.position;
     }
 
     private void Update()
@@ -56,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         ZRotation = Input.GetAxis("ZRotation");
         XRotation = Input.GetAxis("XRotation");
 
+        resetButtonIsPressed = Input.GetKeyDown(KeyCode.R);
         jumpKeyIsPressed = Input.GetKeyDown(KeyCode.Space);
         jumpKeyIsHeld = Input.GetKey(KeyCode.Space);
 
@@ -65,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
         if (jumpKeyIsPressed)
         {
             AttemptJump();
+        }
+
+        if (resetButtonIsPressed)
+        {
+            ResetPlayerLocation(); 
         }
     }
 
@@ -197,6 +207,13 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         isJumpCooldownActive = false;
+    }
+
+    private void ResetPlayerLocation()
+    {
+        rigidbody.position = playerStartPos;
+        rigidbody.velocity = Vector3.zero;
+        jumpState = JumpState.HasLanded;
     }
 
     private enum JumpState
