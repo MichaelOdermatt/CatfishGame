@@ -8,11 +8,11 @@
 - [x] Add screen to monitor
 - [x] Fix blinking line script's remove character method
 - [x] Texture monitor
-- [ ] Create additional assets for the desk
+- [x] Create additional assets for the desk
 - [x] Create a mouse model
 - [x] Create a wood texture for the desk
 - [x] Create create post-it note with login password on it
-- [ ] Fix lighting
+- [x] Fix lighting
 - [x] Add lamp model
 - [x] Create Speaker model
 - [ ] Create player animations
@@ -20,7 +20,7 @@
 
 ### Visual Effects
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
-- [ ] Camera wobble?
+- [x] Camera wobble?
 - [ ] Add some form of feedback when the user either gets the login password wrong or right.
 - [ ] Figure out post processing
 
@@ -36,7 +36,7 @@
 - [X] Do something about space being pressed as the first character. Somehow let the player know (or don't allow space to be pressed as a first character).
 - [ ] Make movement feel a bit better
 - [ ] Try and fix the player extended jump
-- [ ] Add a respawn button that resets the player location to the starting location
+- [x] Add a respawn button (R) that resets the player location to the starting location
 
 ## Narrative Ideas
 
