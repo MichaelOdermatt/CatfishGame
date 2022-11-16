@@ -9,15 +9,29 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
     [SerializeField]
     private TextMeshPro textMesh;
     private BlinkingTextCursor blinkingTextCursor;
+    private Color initialTextMeshColor;
+    [SerializeField]
+    private float failedSubmissionEffectDuration;
+    [SerializeField]
+    private float failedSubmissionShakeMagnitude;
+
+    private bool stopUpdatingTextMesh;
+    private string falseSubmissionText = "XXXX";
 
     private void Start()
     {
+        initialTextMeshColor = textMesh.color;
         blinkingTextCursor = new BlinkingTextCursor();
         StartCoroutine(ExecuteAfterTime.Exectute(ContinuouslyToggleUseStringWithCursor, blinkingTextCursor.cursorBlinkFrequency));
     }
 
     void Update()
     {
+        if (stopUpdatingTextMesh)
+        {
+            return;
+        }
+
         var newText = blinkingTextCursor.GetOutputString();
         if (textMesh.text != newText)
         {
@@ -39,12 +53,6 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
         blinkingTextCursor.RemoveLastChar();
     }
 
-    public void ContinuouslyToggleUseStringWithCursor()
-    {
-        blinkingTextCursor.ToggleUseCursor();
-        StartCoroutine(ExecuteAfterTime.Exectute(ContinuouslyToggleUseStringWithCursor, blinkingTextCursor.cursorBlinkFrequency));
-    }
-
     public void ClearText()
     {
         blinkingTextCursor.ClearText(); 
@@ -53,5 +61,32 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
     public string GetText()
     {
         return blinkingTextCursor.GetRawString();
+    }
+
+    public void ContinuouslyToggleUseStringWithCursor()
+    {
+        blinkingTextCursor.ToggleUseCursor();
+        StartCoroutine(ExecuteAfterTime.Exectute(ContinuouslyToggleUseStringWithCursor, blinkingTextCursor.cursorBlinkFrequency));
+    }
+
+    public void OnFalseSubmission()
+    {
+        SetFalseSubmissionProperties();
+        StartCoroutine(ExecuteAfterTime.Exectute(ResetFalseSubmissionProperties, failedSubmissionEffectDuration));
+        StartCoroutine(ObjectShake.Shake(textMesh.transform, failedSubmissionEffectDuration, failedSubmissionShakeMagnitude));
+    }
+
+    private void SetFalseSubmissionProperties()
+    {
+        textMesh.color = Color.red;
+        stopUpdatingTextMesh = true;
+        textMesh.text = falseSubmissionText;
+    }
+
+    private void ResetFalseSubmissionProperties()
+    {
+        textMesh.color = initialTextMeshColor;
+        stopUpdatingTextMesh = false;
+        textMesh.text = "";
     }
 }

@@ -14,7 +14,6 @@ public class PointToPlayer : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Target.position);
         var dir = (Target.position * LookIntensity) - transform.position;
         Quaternion toRotation = Quaternion.FromToRotation(transform.forward, dir);
         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, LookSpeed * Time.deltaTime);

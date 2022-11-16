@@ -21,7 +21,7 @@
 ### Visual Effects
 - [ ] Create an animation on the player text mesh when a key is pressed or deleted.
 - [x] Camera wobble?
-- [ ] Add some form of feedback when the user either gets the login password wrong or right.
+- [x] Add some form of feedback when the user either gets the login password wrong or right.
 - [ ] Figure out post processing
 
 ## Sound

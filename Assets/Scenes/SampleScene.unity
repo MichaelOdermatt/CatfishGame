@@ -3580,6 +3580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 437226422}
+  failedSubmissionEffectDuration: 0.3
+  failedSubmissionShakeMagnitude: 0.4
 --- !u!1 &441916765
 GameObject:
   m_ObjectHideFlags: 0
