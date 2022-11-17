@@ -31,9 +31,14 @@ public class UpdateScreen : MonoBehaviour
     public void AttemptLogin()
     {
         if (LoginPassword.IsPasswordCorrect(letterOutput.GetText()))
+        {
             ScreenImage.sprite = AfterloginScreenImage;
+            letterOutput.OnCorrectSubmission();
+        }
         else
+        {
             letterOutput.OnFalseSubmission();
+        }
 
         letterOutput.ClearText();    
     }

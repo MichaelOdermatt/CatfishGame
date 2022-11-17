@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -16,7 +16,9 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
     private float failedSubmissionShakeMagnitude;
 
     private bool stopUpdatingTextMesh;
+    private bool isSubmissionCoroutineRunning;
     private string falseSubmissionText = "XXXX";
+    private string correctSubmissionText = ":):):):)";
 
     private void Start()
     {
@@ -72,8 +74,22 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
     public void OnFalseSubmission()
     {
         SetFalseSubmissionProperties();
-        StartCoroutine(ExecuteAfterTime.Exectute(ResetFalseSubmissionProperties, failedSubmissionEffectDuration));
-        StartCoroutine(ObjectShake.Shake(textMesh.transform, failedSubmissionEffectDuration, failedSubmissionShakeMagnitude));
+        if (!isSubmissionCoroutineRunning)
+        {
+            StartCoroutine(ExecuteAfterTime.Exectute(ResetSubmissionProperties, failedSubmissionEffectDuration));
+            StartCoroutine(ObjectShake.Shake(textMesh.transform, failedSubmissionEffectDuration, failedSubmissionShakeMagnitude));
+            isSubmissionCoroutineRunning = true;
+        }
+    }
+
+    public void OnCorrectSubmission()
+    {
+        SetCorrectSubmissionProperties();
+        if (!isSubmissionCoroutineRunning)
+        {
+            StartCoroutine(ExecuteAfterTime.Exectute(ResetSubmissionProperties, failedSubmissionEffectDuration));
+            isSubmissionCoroutineRunning = true;
+        }
     }
 
     private void SetFalseSubmissionProperties()
@@ -83,10 +99,19 @@ public class UpdatePlayerInputTextMesh : MonoBehaviour
         textMesh.text = falseSubmissionText;
     }
 
-    private void ResetFalseSubmissionProperties()
+    private void SetCorrectSubmissionProperties()
+    {
+        textMesh.color = Color.green;
+        stopUpdatingTextMesh = true;
+        textMesh.text = correctSubmissionText;
+    }
+
+    private void ResetSubmissionProperties()
     {
         textMesh.color = initialTextMeshColor;
         stopUpdatingTextMesh = false;
+        isSubmissionCoroutineRunning = false;
         textMesh.text = "";
     }
+
 }
