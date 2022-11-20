@@ -12409,6 +12409,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1
+  animator: {fileID: 5866666020055352131}
 --- !u!1 &1924357220
 GameObject:
   m_ObjectHideFlags: 0

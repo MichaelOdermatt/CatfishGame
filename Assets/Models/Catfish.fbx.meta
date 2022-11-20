@@ -44,11 +44,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|0Idle (1)
-      takeName: Armature|0Idle
+      name: 1Jump
+      takeName: 1Jump
       internalID: 0
       firstFrame: 0
-      lastFrame: 149
+      lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

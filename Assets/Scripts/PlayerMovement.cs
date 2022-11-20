@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private float groundCheckRadius;
     [SerializeField]
     private LayerMask whatIsGround;
+    [SerializeField]
+    private Animator animator;
 
     // Inputs (only to be updated in the Update method)
     private float ZMovement;
@@ -46,10 +48,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 playerStartPos;
 
+    private PlayerAnimationController animationController;
+
     private void Start()
     {
         calculateBottomOfPlayer();
         playerStartPos = rigidbody.position;
+        animationController = new PlayerAnimationController(animator);
     }
 
     private void Update()
@@ -96,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
             if (!jumpKeyIsHeld)
             {
                 jumpState = JumpState.IsFalling;
+                animationController.StartIdleAnimation();
             }
         }
     }
@@ -140,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
         } else
         {
             jumpState = JumpState.IsFalling;
+            animationController.StartIdleAnimation();
         }
     }
 
@@ -149,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
             jumpState = JumpState.IsJumping;
+            animationController.StartJumpAnimation();
             jumpTimeCounter = jumpTime;
         }
     }
@@ -170,6 +178,7 @@ public class PlayerMovement : MonoBehaviour
         {
             StartJumpCooldownTimer();
             jumpState = JumpState.HasLanded;
+            animationController.StartIdleAnimation();
         } else
         {
             StartCoroutine(ExecuteAfterTime.Exectute(RecheckHasLanded, jumpCooldownTime));
@@ -186,6 +195,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             jumpState = JumpState.HasLanded;
+            animationController.StartIdleAnimation();
         } else
         {
             StartCoroutine(ExecuteAfterTime.Exectute(RecheckHasLanded, jumpCooldownTime));
@@ -214,6 +224,7 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.position = playerStartPos;
         rigidbody.velocity = Vector3.zero;
         jumpState = JumpState.HasLanded;
+        animationController.StartIdleAnimation();
     }
 
     private enum JumpState
