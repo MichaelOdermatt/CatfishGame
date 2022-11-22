@@ -8,6 +8,8 @@ public class UpdateScreen : MonoBehaviour
 {
     [SerializeField]
     private UpdatePlayerInputTextMesh letterOutput;
+    [SerializeField]
+    private MonitorAudio montiorAudio;
     public bool isCapsLockOn;
     [SerializeField]
     private Image ScreenImage;
@@ -34,10 +36,12 @@ public class UpdateScreen : MonoBehaviour
         {
             ScreenImage.sprite = AfterloginScreenImage;
             letterOutput.OnCorrectSubmission();
+            montiorAudio.PlayAccessGrantedSound();
         }
         else
         {
             letterOutput.OnFalseSubmission();
+            montiorAudio.PlayAccessDeniedSound();
         }
 
         letterOutput.ClearText();    
