@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerStartPos;
 
     private PlayerAnimationController animationController;
+    [SerializeField]
+    private PlayerImpactAudio playerImpactAudio;
 
     private void Start()
     {
@@ -174,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        playerImpactAudio.PlayImpactSound(collision.relativeVelocity.magnitude, collision.gameObject.layer);
         if (isGrounded)
         {
             StartJumpCooldownTimer();
