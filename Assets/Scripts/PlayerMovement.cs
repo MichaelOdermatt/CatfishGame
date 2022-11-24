@@ -51,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAnimationController animationController;
     [SerializeField]
     private PlayerImpactAudio playerImpactAudio;
+    [SerializeField]
+    private PlayerJumpAudio playerJumpAudio;
 
     private void Start()
     {
@@ -160,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
             jumpState = JumpState.IsJumping;
             animationController.StartJumpAnimation();
             jumpTimeCounter = jumpTime;
+            playerJumpAudio.PlayJumpSound();
         }
     }
 
