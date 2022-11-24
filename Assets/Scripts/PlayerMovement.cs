@@ -176,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
         playerImpactAudio.PlayImpactSound(collision.relativeVelocity.magnitude, collision.gameObject.layer);
         if (isGrounded)
         {
