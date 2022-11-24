@@ -10,6 +10,8 @@ public class RgisterKeys : MonoBehaviour
 {
     [SerializeField]
     private UpdateScreen updateScreen;
+    [SerializeField]
+    private KeyPressAudio keyPressAudio;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,5 +24,6 @@ public class RgisterKeys : MonoBehaviour
             return;
 
         keyFunction.Action(updateScreen);
+        keyPressAudio.PlayKeyPressSound();
     }
 }
