@@ -25,7 +25,7 @@
 
 ## Sound
 - [ ] Add music to speaker asset
-- [ ] Add sounds to player movement
+- [x] Add sounds to player movement
 
 ### Story
 - [ ] Come up with some sort of narrative
