@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RadioButton : MonoBehaviour
@@ -17,6 +15,12 @@ public class RadioButton : MonoBehaviour
     private Color radioOffColor;
 
     private bool isRadioOn = false;
+    private float[] randomPitchValues = new float[3]
+    {
+        0.9f,
+        1,
+        1.25f,
+    };
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,6 +28,7 @@ public class RadioButton : MonoBehaviour
         {
             radioLight.color = radioOnColor;
             radioLightMeshRenderer.material.color = radioOnColor;
+            RandomizePitch();
             radioAudioSource.Play();    
             isRadioOn = true;
         } else
@@ -33,5 +38,11 @@ public class RadioButton : MonoBehaviour
             radioAudioSource.Stop();    
             isRadioOn = false;
         }
+    }
+
+    private void RandomizePitch()
+    {
+        int soundIndex = Random.Range(0, randomPitchValues.Length);
+        radioAudioSource.pitch = randomPitchValues[soundIndex];
     }
 }
