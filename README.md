@@ -24,7 +24,7 @@
 - [ ] Figure out post processing
 
 ## Sound
-- [ ] Add music to speaker asset
+- [x] Add music to speaker asset
 - [x] Add sounds to player movement
 
 ### Story
@@ -36,9 +36,6 @@
 - [ ] Make movement feel a bit better
 - [ ] Try and fix the player extended jump
 - [x] Add a respawn button (R) that resets the player location to the starting location
-
-### Code
-- [ ] Seperate all player movement code into its own class, then create deticated player script
 
 ## Narrative Ideas
 
