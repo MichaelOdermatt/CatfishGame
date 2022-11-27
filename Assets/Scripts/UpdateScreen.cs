@@ -34,12 +34,12 @@ public class UpdateScreen : MonoBehaviour
     {
         if (LoginPassword.IsPasswordCorrect(letterOutput.GetText()))
         {
-            ScreenImage.sprite = AfterloginScreenImage;
             letterOutput.OnCorrectSubmission();
             montiorAudio.PlayAccessGrantedSound();
         }
         else
         {
+            ScreenImage.sprite = AfterloginScreenImage;
             letterOutput.OnFalseSubmission();
             montiorAudio.PlayAccessDeniedSound();
         }

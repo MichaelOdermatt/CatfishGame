@@ -4897,7 +4897,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.5771434, b: 0.56078434, a: 1}
+  m_Color: {r: 1, g: 0.49985254, b: 0.36320752, a: 1}
   m_Intensity: 2
   m_Range: 100
   m_SpotAngle: 85.4
@@ -8070,7 +8070,7 @@ MonoBehaviour:
   montiorAudio: {fileID: 1039489175}
   isCapsLockOn: 0
   ScreenImage: {fileID: 300878772}
-  AfterloginScreenImage: {fileID: 21300000, guid: 84b7cc7ae42945d4c924b1101f5dd286, type: 3}
+  AfterloginScreenImage: {fileID: 21300000, guid: 2b745283f8a5c9645aec8d8daad35e3d, type: 3}
 --- !u!1 &1110541309
 GameObject:
   m_ObjectHideFlags: 0
